@@ -14,20 +14,17 @@ connectDB();
 //Init middleware to send json
 app.use(express.json({ extended: false }));
 
-app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, 'client/build')));
-app.get('/ping', function (req, res) {
- return res.send('pong');
-});
-app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
-
 /* Define routes to use */
 app.use("/api/equipment", require("./routes/api/equipment"));
 app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/customer", require("./routes/api/customer"));
 app.use("/api/technician", require("./routes/api/technician"));
+
+//Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 //Activate server
 app.listen(PORT, () => console.log(`Server is listening on port ${ PORT }`));
