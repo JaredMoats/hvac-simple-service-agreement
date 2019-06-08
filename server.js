@@ -14,8 +14,14 @@ connectDB();
 //Init middleware to send json
 app.use(express.json({ extended: false }));
 
-//default route
-app.get("/", (req, res) => res.send("HVAC Service Agreement API Running"));
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('/ping', function (req, res) {
+ return res.send('pong');
+});
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 /* Define routes to use */
 app.use("/api/equipment", require("./routes/api/equipment"));
