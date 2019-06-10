@@ -62,7 +62,7 @@ const Register = ({ setToken }) => {
             console.log("JSON form data: " + body);
 
             try {
-                const res = await axios.post(local, body, config);
+                const res = await axios.post(production, body, config);
                 setToken(res.data.token);
             } catch (error) {
                 console.log(error.response.data);
