@@ -41,7 +41,6 @@ const Login = ({ setToken }) => {
 
         try {
             const res = await axios.post(production, body, config);
-            console.log("Your token: " + res.data.token);
             setToken(res.data.token);
         } catch (error) {
             console.log(error.response.data);
