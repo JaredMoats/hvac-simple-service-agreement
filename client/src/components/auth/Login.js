@@ -65,7 +65,7 @@ const Login = ({ setToken }) => {
                     <div className="field">
                         <label className="label">Password</label>
                         <div className="control has-icons-left">
-                            <input className="input" type="text" placeholder="Password" name="password" value={password} onChange={ event => onChange(event)} required/>
+                            <input className="input" type="password" placeholder="Password" name="password" value={password} onChange={ event => onChange(event)} required/>
                             
                         </div>
                     </div>
