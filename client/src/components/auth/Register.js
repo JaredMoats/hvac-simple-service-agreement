@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import Login from "./Login";
 import axios from "axios";
 
 const Register = ({ setToken }) => {
@@ -38,11 +39,6 @@ const Register = ({ setToken }) => {
         setFormData({ ...formData, [event.target.name]: event.target.value, selectedOption: event.target.value });
     }
 
-    /*const checkRadioButton = event => {
-        setFormData({ ...formData, role: event.target.value, selectedOption: event.target.value });
-        console.log("role is: " + role);
-    }*/
-
     const onSubmit = async event => {
         event.preventDefault();
         const local = "http://localhost:5000/api/employees";
@@ -73,7 +69,7 @@ const Register = ({ setToken }) => {
     return (
         <Fragment>
             <h1 className="has-text-black" style={ h1 }>Welcome to Simple Service Agreement</h1>
-            <h2 className="has-text-black" style={ h2 }>Register or <a href="#">Login</a></h2>
+            <h2 className="has-text-black" style={ h2 }>Register or <Link to="/login">Login</Link></h2>
             <div className="card">
                 <form onSubmit={ event => onSubmit(event) }>
                     <div className="field">

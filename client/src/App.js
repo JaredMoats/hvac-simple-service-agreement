@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Register from "./components/auth/Register";
-import logo from './logo.svg';
-import './App.css';
+import Login from "./components/auth/Login";
 
 class App extends Component {
   constructor() {
@@ -19,11 +18,21 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <Register 
-          setToken={ token => this.setToken(token) }
-        />
-      </div>
+      <Router>
+        <div className="container">
+          <Route 
+            exact path="/" 
+            render={ props =>  <Register setToken={ token => this.setToken(token) } />} 
+          
+          />
+          <Switch>
+            <Route 
+              exact path="/login" 
+              render={ props => <Login setToken={ token => this.setToken(token) } /> } 
+            />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
