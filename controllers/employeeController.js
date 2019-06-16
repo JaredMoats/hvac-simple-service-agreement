@@ -77,5 +77,21 @@ module.exports = {
             console.error(error.message);
             res.status(500).send("Server error in registerEmployee()");
         }
+    },
+    async getCurrentEmployee(req, res) {
+        try {
+            /* #1 Find employee matching logged in user's email */
+            console.log("req.user.id: " + req.user.id);
+            let employee = await Employee.findOne({ _id: req.user.id });
+
+            if(!employee) {
+                return res.status(400).json({ msg: "No such user exists" });
+            }
+
+            res.json(employee);
+        } catch (error) {
+            console.error(error.message);
+            res.status(500).send("Server error in getCurrentEmployee()");
+        }
     }
 }

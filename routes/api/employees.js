@@ -2,8 +2,20 @@ const express = require("express");
 const router = express.Router();
 const { check } = require("express-validator/check");
 const employeeController = require("../../controllers/employeeController");
+const auth = require("../../middleware/auth");
 
 router.get("/", (req, res) => res.send("Employee information"));
+
+/* 
+    @route  GET /api/employees/me
+    @desc   Get current logged in employees info
+    @access Private
+*/
+router.get(
+    "/me",
+    auth,
+    employeeController.getCurrentEmployee
+);
 
 /*
     @route  POST api/employees

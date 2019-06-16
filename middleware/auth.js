@@ -20,7 +20,8 @@ module.exports = function(req, res, next) {
 		/* Decoded receives a user object because we added a 
         user object to our payload. Set req.user to that object
         so it can be used elsewhere in the application */
-		req.user = decoded.user;
+		req.user = decoded.employee;
+		console.log("req.user: " + req.user);
 		next();
 	} catch (err) {
 		res.status(401).json({ msg: "Token is not valid" });
