@@ -15,8 +15,8 @@ const Register = ({ storeToken, getToken, setActiveUser }) => {
         selectedOption: ""
     });
 
-    const [dashboard, setDashboardStatus] = useState({
-        toDashboard: false
+    const [login, setLoginStatus] = useState({
+        toLogin: false
     });
 
     const { 
@@ -31,8 +31,8 @@ const Register = ({ storeToken, getToken, setActiveUser }) => {
      } = formData;
 
      const {
-         toDashboard
-     } = dashboard;
+         toLogin
+     } = login;
 
     const h1 = {
         fontSize: "40px"
@@ -48,11 +48,6 @@ const Register = ({ storeToken, getToken, setActiveUser }) => {
 
     const onSubmit = async event => {
         event.preventDefault();
-        const localPost = "http://localhost:5000/api/employees";
-        const productionPost = "/api/employees";
-
-        const localGet = "http://localhost:5000/api/employees/me";
-        const productionGet = "/api/employees/me";
 
         if(password !== password2) {
             alert("Passwords do not match");
@@ -68,7 +63,7 @@ const Register = ({ storeToken, getToken, setActiveUser }) => {
             console.log("JSON form data: " + body);
 
             try {
-                const res = await axios.post(productionPost, body, config);
+                const res = await axios.post("/api/employees", body, config);
                 storeToken(res.data.token);
 
                 /* Get active user, store in state. */
@@ -78,22 +73,16 @@ const Register = ({ storeToken, getToken, setActiveUser }) => {
                 }
 
                 console.log("Token set in headers object");
-                console.log("toDashboard: " + toDashboard);
-
-                setTimeout(async () => {
-                    console.log("setTimeout contents triggered");
-                    const employee = await axios.get(productionGet, { headers: headers });
-                    console.log("Got employee");
-                    setActiveUser(employee);
-                    setDashboardStatus({ toDashboard: true });
-                }, 10000);
+                console.log("toDashboard: " + toLogin);
+                
+                setLoginStatus({ toLogin: true });
             } catch (error) {
                 console.log(error.response.data);
             }
         }
     }
 
-    if(!toDashboard) {
+    if(!toLogin) {
         return (
             <Fragment>
                 <h1 className="has-text-black" style={ h1 }>Welcome to Simple Service Agreement</h1>
@@ -163,7 +152,7 @@ const Register = ({ storeToken, getToken, setActiveUser }) => {
         );
     } else {
         return(
-            <Redirect to="/dashboard" />
+            <Redirect to="/login" />
         );
     }
 }

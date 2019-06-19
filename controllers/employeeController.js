@@ -30,7 +30,7 @@ module.exports = {
 
             if(employee) {
                 return res
-                    .statuscode(400)
+                    .status(400)
                     .json({ errors: [{ msg: "User already exists" }] });
             }
 

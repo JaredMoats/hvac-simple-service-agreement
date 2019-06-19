@@ -55,7 +55,7 @@ const Login = ({ storeToken, getToken, setActiveUser }) => {
                 Will get token upon successful login. 
                 Call function to store it locally
              */
-            const res = await axios.post(productionPost, body, config);
+            const res = await axios.post("/api/auth", body, config);
             storeToken(res.data.token);
 
             /* Get active user, store in state. */
@@ -64,7 +64,7 @@ const Login = ({ storeToken, getToken, setActiveUser }) => {
                 "x-auth-token": token
             }
 
-            const employee = await axios.get(productionGet, { headers: headers });
+            const employee = await axios.get("/api/employees/me", { headers: headers });
             setActiveUser(employee);
             setDashboardStatus({ toDashboard: true });
 
