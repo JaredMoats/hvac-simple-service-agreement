@@ -4,7 +4,16 @@ const customerController = require("../../controllers/customerController.js");
 const auth = require("../../middleware/auth");
 const { check } = require("express-validator/check");
 
-router.get("/", (req, res) => res.send("Customer information"));
+/*
+    @route  api/customers
+    @desc   Get all customers
+    #access Private
+*/
+router.get(
+    "/", 
+    auth, 
+    customerController.getAllCustomers
+);
 
 /* 
     @route  api/customers

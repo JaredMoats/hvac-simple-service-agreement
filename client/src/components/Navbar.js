@@ -8,7 +8,7 @@ const Navbar = () => {
                 <Link to="/dashboard" className="navbar-item">Dashboard</Link>
                 <Link to="/dashboard" className="navbar-item">New Service Call</Link>
                 <Link to="/create-customer" className="navbar-item">New Customer</Link>
-                <Link to="/dashboard" className="navbar-item">All Customers</Link>
+                <Link to="/all-customers" className="navbar-item">All Customers</Link>
                 <Link to="/dashboard" className="navbar-item">Look Up Customer</Link>
                 <Link to="/dashboard" className="navbar-item">All Technicians</Link>
             </div>

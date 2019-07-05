@@ -51,6 +51,10 @@ const CustomerSchema = new Schema({
         type: Boolean,
         required: true
     },
+    hasServiceAgreement: {
+        type: Boolean,
+        default: false
+    },
     notes: {
         type: String,
         default: ""

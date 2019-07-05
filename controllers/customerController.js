@@ -58,5 +58,22 @@ module.exports = {
             res.status(500).json({ msg: "Internal server error in POST /api/customers" });
         }
 
+    },
+    async getAllCustomers(req, res) {
+        try {
+            /* 
+                Retrieve customers sorted alphabetically by last name
+            */
+            const customers = await Customer.find().sort({ "lastName": 1 });
+
+            if(!customers) {
+                return res.status(400).json({ msg: "Could not find customers" });
+            }
+
+            res.json(customers);
+        } catch (error) {
+            console.error(error.message);
+            res.status(500).send("Server error in getAllCustomers()");
+        }
     }
 };
