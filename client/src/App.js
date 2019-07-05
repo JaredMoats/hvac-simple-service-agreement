@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/Dashboard";
+import CreateCustomer from "./components/Customer/CreateCustomer";
 
 class App extends Component {
   constructor() {
@@ -44,7 +45,11 @@ class App extends Component {
             />
             <Route 
               exact path="/dashboard"
-              render={ props => <Dashboard activeUser={ this.state.activeUser } /> }
+              render={ props => <Dashboard activeUser={ this.state.activeUser } ifActiveUser={ activeUser => this.ifActiveUser(activeUser) } /> }
+            />
+            <Route
+              exact path="/create-customer"
+              render={ props => <CreateCustomer activeUser={ this.state.activeUser } getToken={ () => this.getToken() } /> }
             />
           </Switch>
         </div>

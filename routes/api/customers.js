@@ -35,6 +35,7 @@ router.post("/",
                 .isEmpty()
         ]
     ], 
-    customerController.createCustomer);
+    customerController.createCustomer
+);
 
 module.exports = router;

@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 
 const Dashboard = ({ setActiveUser, activeUser, getToken }) => {
 
-    if(activeUser === null) {
+   if(!activeUser) {
         return(
             <h1>You must be logged in to do that</h1>
         )
