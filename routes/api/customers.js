@@ -15,6 +15,19 @@ router.get(
     customerController.getAllCustomers
 );
 
+
+/* 
+    @route  api/customers/:id
+    @desc   Get customer by ID
+    @access Private
+*/
+
+router.get(
+    "/:id", 
+    auth, 
+    customerController.getCustomerById
+);
+
 /* 
     @route  api/customers
     @desc   Create a new customer

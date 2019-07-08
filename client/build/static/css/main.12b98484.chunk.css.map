@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,yBACI,YAAa,CACb,qBACJ,CAEA,2BACI,kBACJ","file":"main.12b98484.chunk.css","sourcesContent":[".all-customers-container {\n    display: flex;\n    flex-direction: column;\n}\n\n.all-customers-container > a {\n    margin-bottom: 10px;\n}"]}

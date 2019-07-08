@@ -75,5 +75,21 @@ module.exports = {
             console.error(error.message);
             res.status(500).send("Server error in getAllCustomers()");
         }
+    },
+    async getCustomerById(req, res) {
+        try {
+            const id = req.params.id;
+
+            const customer = await Customer.findById(id);
+
+            if(!customer) {
+                return res.status(500).json({ msg: "No customer found with that ID" });
+            }
+
+            res.json(customer);
+        } catch (error) {
+            console.error(error.message);
+            res.status(500).json({ msg: "Server error in getCustomerById" });
+        }
     }
 };

@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import Navbar from "../Navbar";
 import axios from "axios";
 
@@ -63,15 +64,19 @@ const AllCustomers = ({ getToken, activeUser }) => {
         )
     }
 
+
+
     return (
         <Fragment>
             <Navbar />
             <h1>Customers: </h1>
+            <div className="all-customers-container">
             { 
                 customersData.data.map((customer, index) => (
-                    <p key={index}>Customer: { customer.firstName } { customer.lastName } </p>
+                    <Link to={`/customer/${customer._id}`} key={index}>Customer: { customer.firstName } { customer.lastName } ID: { customer._id }</Link>
                 ))
             }
+            </div>
         </Fragment>
     )
 }

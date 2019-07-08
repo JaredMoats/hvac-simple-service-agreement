@@ -5,6 +5,8 @@ import Login from "./components/auth/Login";
 import Dashboard from "./components/Dashboard";
 import CreateCustomer from "./components/Customer/CreateCustomer";
 import AllCustomers from "./components/Customer/AllCustomers";
+import Customer from "./components/Customer/Customer";
+import "./App.css";
 
 class App extends Component {
   constructor() {
@@ -55,6 +57,10 @@ class App extends Component {
             <Route
               exact path="/all-customers"
               render={ props => <AllCustomers activeUser={ this.state.activeUser } getToken={ () => this.getToken() } /> }
+            />
+            <Route 
+              path="/customer/:id"
+              render={ props => <Customer { ...props } activeUser={ this.state.activeUser } getToken={ () => this.getToken() } /> }
             />
           </Switch>
         </div>
